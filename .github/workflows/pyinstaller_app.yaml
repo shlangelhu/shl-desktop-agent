@@ -1,20 +1,23 @@
 name: Greeting from Mona
 on: push
 
+env:
+  # 生成windows执行程序
+  PACK_WINDOWS : false
+  # 生成mac执行程序
+  PACK_MAC : true
+
 jobs:
-  my-job:
-    name: My Job
+  # 生成windows执行程序
+  pack_windows_job:
+    if: env.PACK_WINDOWS == 'true'
     runs-on: windows-latest
+
     steps:
     - name: Checkout
       uses: actions/checkout@main
 
     - name: pyinstaller-exe
-      env:
-        MY_VAR: Hi there! My name is
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
       run: |
         # choco install python -y
         python -V
@@ -23,4 +26,23 @@ jobs:
         pip install pyinstaller
         pyinstaller -F test.py
         ls
-        #echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  
+  # 生成mac执行程序
+  pack_mac_job:
+    if: env.PACK_MAC == 'true'
+    runs-on: macOS-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: pyinstaller
+      run: |
+        # choco install python -y
+        python -V
+        pip -V
+        pip install fastapi uvicorn
+        pip install pyinstaller
+        pyinstaller -F test.py
+        ls
+    
