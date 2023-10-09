@@ -4,7 +4,7 @@ on: push
 jobs:
   my-job:
     name: My Job
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - name: Print a greeting
       env:
@@ -13,4 +13,5 @@ jobs:
         MIDDLE_NAME: The
         LAST_NAME: Octocat
       run: |
+        choco install python -y
         echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
