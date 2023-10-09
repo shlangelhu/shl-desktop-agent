@@ -38,11 +38,10 @@ jobs:
 
     - name: pyinstaller
       run: |
-        # choco install python -y
-        python -V
-        pip -V
-        pip install fastapi uvicorn
-        pip install pyinstaller
+        python3 -V
+        pip3 -V
+        pip3 install fastapi uvicorn
+        pip3 install pyinstaller
         pyinstaller -F test.py
         ls
     
