@@ -15,4 +15,5 @@ jobs:
       run: |
         # choco install python -y
         python -V
+        pip -V
         echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
