@@ -13,5 +13,6 @@ jobs:
         MIDDLE_NAME: The
         LAST_NAME: Octocat
       run: |
-        choco install python -y
+        # choco install python -y
+        python -V
         echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
