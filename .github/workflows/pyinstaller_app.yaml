@@ -6,8 +6,10 @@ jobs:
     name: My Job
     runs-on: windows-latest
     steps:
-    - name: Print a greeting
+    - name: Checkout
       uses: actions/checkout@main
+
+    - name: pyinstaller-exe
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Mona
