@@ -9,27 +9,27 @@ env:
 
 jobs:
   # 生成windows执行程序
-  pack_windows_job:
-    if: ${{ env.PACK_WINDOWS == 'true' }}
-    runs-on: windows-latest
+  # pack_windows_job:
+  #   if: ${{ env.PACK_WINDOWS == 'true' }}
+  #   runs-on: windows-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@main
 
-    - name: pyinstaller-exe
-      run: |
-        # choco install python -y
-        python -V
-        pip -V
-        pip install fastapi uvicorn
-        pip install pyinstaller
-        pyinstaller -F test.py
-        ls
+  #   - name: pyinstaller-exe
+  #     run: |
+  #       # choco install python -y
+  #       python -V
+  #       pip -V
+  #       pip install fastapi uvicorn
+  #       pip install pyinstaller
+  #       pyinstaller -F test.py
+  #       ls
   
   # 生成mac执行程序
   pack_mac_job:
-    if: ${{ env.PACK_MAC == 'true' }}
+    #if: ${{ env.PACK_MAC == 'true' }}
     runs-on: macOS-latest
     
     steps:
