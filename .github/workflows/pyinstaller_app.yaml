@@ -22,4 +22,5 @@ jobs:
         pip install fastapi uvicorn
         pip install pyinstaller
         pyinstaller -F test.py
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+        ls
+        #echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
