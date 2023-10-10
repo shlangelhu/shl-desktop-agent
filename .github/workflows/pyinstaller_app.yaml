@@ -6,42 +6,53 @@ env:
   PACK_WINDOWS : false
   # 生成mac执行程序
   PACK_MAC : true
+  UPLOAD_COWTRANSFER: true
 
 jobs:
   # 生成windows执行程序
-  # pack_windows_job:
-  #   if: ${{ env.PACK_WINDOWS == 'true' }}
-  #   runs-on: windows-latest
+  pack_windows_job:
+    #if: ${{ env.PACK_WINDOWS == 'true' }}
+    runs-on: windows-latest
 
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@main
-
-  #   - name: pyinstaller-exe
-  #     run: |
-  #       # choco install python -y
-  #       python -V
-  #       pip -V
-  #       pip install fastapi uvicorn
-  #       pip install pyinstaller
-  #       pyinstaller -F test.py
-  #       ls
-  
-  # 生成mac执行程序
-  pack_mac_job:
-    #if: ${{ env.PACK_MAC == 'true' }}
-    runs-on: macOS-latest
-    
     steps:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: pyinstaller
+    - name: pyinstaller-exe
       run: |
-        python3 -V
-        pip3 -V
-        pip3 install fastapi uvicorn
-        pip3 install pyinstaller
+        # choco install python -y
+        python -V
+        pip -V
+        pip install fastapi uvicorn
+        pip install pyinstaller
         pyinstaller -F test.py
+        mkdir agent_app_dir
+        cp .\dist\test.exe .\agent_app_dir\
+        Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
         ls
+
+    - name: Upload firmware to wetransfer
+      id: wetransfer
+      if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+      run: |
+        go install github.com/Mikubill/transfer@latest
+        ./transfer wet agent_app.zip
+  
+  # 生成mac执行程序
+  # pack_mac_job:
+  #   #if: ${{ env.PACK_MAC == 'true' }}
+  #   runs-on: macOS-latest
+    
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@main
+
+  #   - name: pyinstaller
+  #     run: |
+  #       python3 -V
+  #       pip3 -V
+  #       pip3 install fastapi uvicorn
+  #       pip3 install pyinstaller
+  #       pyinstaller -F test.py
+  #       ls
     
