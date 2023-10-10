@@ -8,7 +8,7 @@ env:
   PACK_MAC : true
   UPLOAD_COWTRANSFER: true
 
-# jobs:
+jobs:
 #   # 生成windows执行程序
 #   pack_windows_job:
 #     #if: ${{ env.PACK_WINDOWS == 'true' }}
