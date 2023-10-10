@@ -44,7 +44,6 @@ env:
   
   # 生成mac执行程序
   pack_mac_job:
-    #if: ${{ env.PACK_MAC == 'true' }}
     runs-on: macOS-latest
     
     steps:
