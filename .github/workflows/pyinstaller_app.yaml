@@ -31,12 +31,17 @@ jobs:
     #     Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
     #     ls
 
-    - name: Upload firmware to wetransfer
-      id: wetransfer
-      if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    - name: install pysqlcipher3
       run: |
-        go install github.com/Mikubill/transfer@latest
-        transfer wet test.py
+        pip install pysqlcipher3
+
+
+    # - name: Upload firmware to wetransfer
+    #   id: wetransfer
+    #   if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    #   run: |
+    #     go install github.com/Mikubill/transfer@latest
+    #     transfer wet test.py
   
   # 生成mac执行程序
   # pack_mac_job:
