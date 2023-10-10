@@ -18,25 +18,25 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: pyinstaller-exe
-      run: |
-        # choco install python -y
-        python -V
-        pip -V
-        pip install fastapi uvicorn
-        pip install pyinstaller
-        pyinstaller -F test.py
-        mkdir agent_app_dir
-        cp .\dist\test.exe .\agent_app_dir\
-        Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
-        ls
+    # - name: pyinstaller-exe
+    #   run: |
+    #     # choco install python -y
+    #     python -V
+    #     pip -V
+    #     pip install fastapi uvicorn
+    #     pip install pyinstaller
+    #     pyinstaller -F test.py
+    #     mkdir agent_app_dir
+    #     cp .\dist\test.exe .\agent_app_dir\
+    #     Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
+    #     ls
 
     - name: Upload firmware to wetransfer
       id: wetransfer
       if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         go install github.com/Mikubill/transfer@latest
-        ./transfer wet agent_app.zip
+        transfer wet test.py
   
   # 生成mac执行程序
   # pack_mac_job:
