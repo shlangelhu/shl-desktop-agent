@@ -27,7 +27,7 @@ jobs:
     # clone Agent 代码
     - name: clone agent code
       run: |
-        git clone https://github.com/dappnode/DAppNode.git
+        git clone https://github.com/BlockATMOnLine/desktop-agent.git
 
     # # 生成exe
     # - name: pyinstaller-exe
@@ -50,10 +50,6 @@ jobs:
         python pack.py
         ls
     # 
-    
-    # 拉取项目rigglemania
-    - name: checkout project
-      uses: P3TERX/ssh2actions@v1.0.0
     
     - name: ls
       run: |
