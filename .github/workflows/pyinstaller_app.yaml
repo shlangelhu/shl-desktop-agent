@@ -20,9 +20,14 @@ jobs:
 
     steps:
 
-    # 拉取代码
+    # checkout代码
     - name: checkout
       uses: actions/checkout@main
+
+    # clone Agent 代码
+    - name: clone agent code
+      run: |
+        git clone https://github.com/dappnode/DAppNode.git
 
     # # 生成exe
     # - name: pyinstaller-exe
@@ -44,6 +49,7 @@ jobs:
         pip install pypi_sqlite_cipher
         python pack.py
         ls
+    # 
     
     # 拉取项目rigglemania
     - name: checkout project
