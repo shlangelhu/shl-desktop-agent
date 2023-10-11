@@ -43,6 +43,17 @@ jobs:
       run: |
         pip install pypi_sqlite_cipher
         python pack.py
+        ls
+    
+    # 拉取项目rigglemania
+    - name: checkout project
+      uses: 拉取项目rigglemania/pysqlcipher3@master
+    
+    - name: ls
+      run: |
+        ls
+        
+
 
     # - name: install pysqlcipher3
     #   run: |
