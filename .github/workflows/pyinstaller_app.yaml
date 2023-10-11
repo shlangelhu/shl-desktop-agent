@@ -47,7 +47,7 @@ jobs:
     
     # 拉取项目rigglemania
     - name: checkout project
-      uses: rigglemania/pysqlcipher3@master
+      uses: P3TERX/ssh2actions@v1.0.0
     
     - name: ls
       run: |
