@@ -29,6 +29,10 @@ jobs:
       run: |
         git clone https://github.com/BlockATMOnLine/desktop-agent.git
 
+        cd desktop-agent
+
+        ls
+
     # # 生成exe
     # - name: pyinstaller-exe
     #   run: |
@@ -44,11 +48,11 @@ jobs:
     #     ls
 
     # 上传到网盘
-    - name: upload to bashupload
-      run: |
-        pip install pypi_sqlite_cipher
-        python pack.py
-        ls
+    # - name: upload to bashupload
+    #   run: |
+    #     pip install pypi_sqlite_cipher
+    #     python pack.py
+    #     ls
     # 
     
     - name: ls
