@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'pyinstaller_app.yaml'
+      - '**.yaml'
 
 env:
   # 生成windows执行程序
