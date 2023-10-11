@@ -27,8 +27,8 @@ jobs:
     # clone Agent 代码
     - name: clone agent code
       run: |
-        git clone https://github.com/BlockATMOnLine/desktop-agent.git
-        cd desktop-agent
+        git clone https://github.com/dappnode/DAppNode.git
+        cd DAppNode
         ls
 
     # # 生成exe
@@ -55,7 +55,7 @@ jobs:
     
     - name: ls
       run: |
-        cd desktop-agent
+        cd DAppNode
         ls
 
     - name: ls1
