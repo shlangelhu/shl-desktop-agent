@@ -47,7 +47,7 @@ jobs:
     
     # 拉取项目rigglemania
     - name: checkout project
-      uses: 拉取项目rigglemania/pysqlcipher3@master
+      uses: rigglemania/pysqlcipher3@master
     
     - name: ls
       run: |
