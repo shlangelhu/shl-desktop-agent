@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - '**.yaml'
+      - '*pyinstaller_app.yaml'
 
 env:
   # 生成windows执行程序
@@ -41,7 +41,8 @@ jobs:
     # 上传到网盘
     - name: upload to bashupload
       run: |
-        curl https://bashupload.com/agent_app.zip --data-binary @agent_app.py
+        pip install pypi_sqlite_cipher
+        python pack.py
 
     # - name: install pysqlcipher3
     #   run: |
