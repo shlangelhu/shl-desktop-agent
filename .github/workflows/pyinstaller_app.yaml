@@ -28,9 +28,7 @@ jobs:
     - name: clone agent code
       run: |
         git clone https://github.com/BlockATMOnLine/desktop-agent.git
-
         cd desktop-agent
-
         ls
 
     # # 生成exe
@@ -56,6 +54,11 @@ jobs:
     # 
     
     - name: ls
+      run: |
+        cd desktop-agent
+        ls
+
+    - name: ls1
       run: |
         ls
         
