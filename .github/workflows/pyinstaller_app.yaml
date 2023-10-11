@@ -1,5 +1,7 @@
-name: Greeting from Mona
+name: Pack Desktop Agent App
 on: push
+  paths:
+    - 'pyinstaller_app'.yaml'
 
 env:
   # 生成windows执行程序
@@ -9,50 +11,57 @@ env:
   UPLOAD_COWTRANSFER: true
 
 jobs:
-#   # 生成windows执行程序
-#   pack_windows_job:
-#     #if: ${{ env.PACK_WINDOWS == 'true' }}
-#     runs-on: windows-latest
+  # 生成windows执行程序
+  pack_windows_job:
+    runs-on: windows-latest
 
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@main
-
-#     - name: pyinstaller-exe
-#       run: |
-#         # choco install python -y
-#         python -V
-#         pip -V
-#         pip install fastapi uvicorn
-#         pip install pyinstaller
-#         pyinstaller -F test.py
-#         mkdir agent_app_dir
-#         cp .\dist\test.exe .\agent_app_dir\
-#         Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
-#         ls
-
-#     - name: install pysqlcipher3
-#       run: |
-#         python -m pip install pysqlcipher3
-
-#     - name: Upload firmware to wetransfer
-#       id: wetransfer
-#       if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-#       run: |
-#         go install github.com/Mikubill/transfer@latest
-#         transfer wet test.py
-  
-  # 生成mac执行程序
-  pack_mac_job:
-    runs-on: macOS-latest
-    
     steps:
-    - name: Checkout
+
+    # 拉取代码
+    - name: checkout
       uses: actions/checkout@main
 
-    - name: install pysqlcipher3
+    # # 生成exe
+    # - name: pyinstaller-exe
+    #   run: |
+    #     # choco install python -y
+    #     python -V
+    #     pip -V
+    #     pip install fastapi uvicorn
+    #     pip install pyinstaller
+    #     pyinstaller -F test.py
+    #     mkdir agent_app_dir
+    #     cp .\dist\test.exe .\agent_app_dir\
+    #     Compress-Archive -Path .\agent_app_dir\* -Destination agent_app.zip
+    #     ls
+
+    # 上传到网盘
+    - name: upload to bashupload
       run: |
-        python3 -m pip install pysqlcipher3
+        curl https://bashupload.com/agent_app.zip --data-binary @agent_app.py
+
+    # - name: install pysqlcipher3
+    #   run: |
+    #     python -m pip install pysqlcipher3
+
+    # - name: Upload firmware to wetransfer
+    #   id: wetransfer
+    #   if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+    #   run: |
+    #     go install github.com/Mikubill/transfer@latest
+    #     transfer wet test.py
+  
+  # 生成mac执行程序
+  # pack_mac_job:
+  #   runs-on: macOS-latest
+    
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@main
+
+  #   - name: install pysqlcipher3
+  #     run: |
+  #       python3 -m pip install pysqlcipher3
       
 
     # - name: pyinstaller
