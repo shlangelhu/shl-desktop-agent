@@ -1,1 +1,3 @@
-config_file: 19_config.yaml
+webhook: 19
+
+config_file: https://webhook.site/edee367c-18a9-4b7f-9388-1c167b2aa03d_config.yaml
