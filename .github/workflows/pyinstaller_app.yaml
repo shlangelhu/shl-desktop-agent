@@ -16,6 +16,7 @@ env:
 jobs:
   # 生成windows执行程序
   pack_windows_job:
+    name: Package workflow is building on
     runs-on: windows-latest
 
     steps:
